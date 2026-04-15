@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 const ANTHROPIC_API = "https://api.anthropic.com/v1/messages";
+const API_KEY = "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";
 
 const TOPICS = [
   { label: "Investing", emoji: "📈", prompt: "Write an engaging, expert-level blog article about smart investing strategies for 2026. Include practical tips, current trends, and actionable advice. Format with a compelling headline, intro, 3-4 sections with subheadings, and a conclusion. Around 400 words." },
@@ -50,7 +51,12 @@ export default function FinanceBlog() {
     try {
       const res = await fetch(ANTHROPIC_API, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": API_KEY,
+          "anthropic-version": "2023-06-01",
+          "anthropic-dangerous-direct-browser-access": "true",
+        },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514",
           max_tokens: 1000,
