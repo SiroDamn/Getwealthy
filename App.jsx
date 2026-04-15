@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react";
 //     eine Serverless Function (z.B. Vercel API Routes).
 // ============================================================
 const ANTHROPIC_API = "https://api.anthropic.com/v1/messages";
-const API_KEY = "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";
+const API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY || "";
 
 // ============================================================
 // GOOGLE ADSENSE KONFIGURATION
